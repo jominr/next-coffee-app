@@ -9,18 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.0.0",
+    "@aws-sdk/client-s3": "^3.564.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/parse-full-name": "^1.2.5",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
+    "next": "14.2.3",
+    "next-auth": "^5.0.0-beta.17",
+    "parse-full-name": "^1.2.6",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.3"
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uniqid": "^5.3.4",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "typescript": "^5"
   }
 }

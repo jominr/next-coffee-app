@@ -11,8 +11,8 @@ const Header = ({session}: {session: Session | null}) => {
   const name = session?.user?.name || '';
   const {last:lastName} = parseFullName(name);
   return (
-    <header className="mb-4">
-      <div className="flex justify-between max-w-2xl mx-auto px-4 py-4">
+    <header className="bg-white">
+      <div className="flex justify-between max-w-3xl mx-auto px-4 py-4">
         <Link href={'/'} className="inline-flex items-center gap-1">
           <FontAwesomeIcon className="h-8" icon={faMugHot} />
           <span className="mt-2">Buy me a coffee</span>
@@ -43,7 +43,7 @@ const Header = ({session}: {session: Session | null}) => {
             {!session && (
               <>
                 <button
-                  onClick={async () => await signIn()}
+                  onClick={() => signIn()}
                   className="bg-gray-200 rounded-full px-4 py-2 ml-4"
                 >
                   Login

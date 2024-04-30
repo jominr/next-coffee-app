@@ -1,6 +1,9 @@
 import ProfileInfoForm from "@/components/ProfileInfoForm";
 import { auth } from "@/lib/auth";
+import { Donation, DonationModel } from "@/models/Donation";
 import { ProfileInfoModel } from "@/models/ProfileInfo";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mongoose from "mongoose";
 
 const ProfilePage = async () => {
@@ -10,11 +13,26 @@ const ProfilePage = async () => {
   }
   const email = session.user.email;
   await mongoose.connect(process.env.MONGODB_URI as string);
+  // 忽略大小写
   const profileInfoDoc = JSON.parse(JSON.stringify(await ProfileInfoModel.findOne({email})));
+  
+  const donations:Donation[] = await DonationModel.find({paid:true, email});
+  const total = donations.reduce((current, d) => current + d.amount * 5, 0);
+
   return (
-    <div className="max-w-2xl mx-auto px-4">
+    <div className="max-w-2xl mx-auto px-4 mt-4">
       <ProfileInfoForm profileInfo={profileInfoDoc}/>
-      <div>donations list</div>
+      <div className="bg-yellow-300/20 border-2 border-yellow-300 p-4 rounded-xl flex items-center gap-2 my-4 justify-between">
+        <div className="flex items-center gap-2">
+          Total money received: <span className="text-2xl">${total}</span>
+        </div>
+        <a
+          className="bg-yellow-300 px-4 py-2 rounded-lg flex items-center gap-2"
+          href="mailto:payouts@bmac.io">
+          Request a payout
+          <FontAwesomeIcon icon={faArrowRight} />
+        </a>
+      </div>
     </div>
   );
 };

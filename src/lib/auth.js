@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 import Google from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { User } from "./models";
+import { User } from "../models/User";
 import { connectToDB } from "./utils";
 
 export const {
@@ -21,6 +21,7 @@ export const {
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
+  // 视频里用的是adapter： MongoDBAdapter()，没搞成，我们就自己写下callback方法
   callbacks: {
     async signIn({ user, account, profile }) {
       if (account.provider === "github") {

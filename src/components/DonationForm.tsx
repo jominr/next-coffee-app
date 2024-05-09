@@ -38,7 +38,7 @@ const DonationForm = ({email}: {email: string}) => {
   return (
     <form action={handleFormSubmit}>
       <div className="border border-yellow-300 bg-yellow-300/10 rounded-xl p-4 flex gap-2 items-center">
-        <FontAwesomeIcon icon={faCoffee}/>
+        <FontAwesomeIcon icon={faCoffee} height="1rem"/>
         <span>x</span>
         <button type="button" onClick={()=>{setAmount(1); setNumberInValue('1')}} className={'amount ' + (amount === 1 ? 'active' : '')}>1</button>
         <button type="button" onClick={()=>{setAmount(3); setNumberInValue('3')}} className={'amount ' + (amount === 3 ? 'active' : '')}>3</button>
@@ -53,6 +53,7 @@ const DonationForm = ({email}: {email: string}) => {
         <textarea name="message" id="" placeholder="Say something nice"/>
       </div>
       {/* div.mt-2*/}
+      {/* 比特币，以太坊，莱特币，三种加密货币 */}
       <div className="mt-2">
         <h3 className="text-xs text-gray-500 mb-1">Pay with selected crypto or with cc</h3>
         <div className="flex gap-1">

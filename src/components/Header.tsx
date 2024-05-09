@@ -2,13 +2,14 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons";
-import { signIn } from "next-auth/react"
+import { signIn, signOut } from "next-auth/react"
 import { Session } from "next-auth";
 import Image from "next/image";
 import {parseFullName} from "parse-full-name";
 
 const Header = ({session}: {session: Session | null}) => {
   const name = session?.user?.name || '';
+  
   const {last:lastName} = parseFullName(name);
   return (
     <header className="bg-white">
@@ -24,20 +25,28 @@ const Header = ({session}: {session: Session | null}) => {
 
           <div className="flex gap-4">
             {session && (
-              <div className="">
-                <Link
-                  href={"/profile"}
-                  className="flex items-center gap-2 bg-yellow-300 rounded-full p-1 pr-4"
+              <>
+                <div className="">
+                  <Link
+                    href={"/profile"}
+                    className="flex items-center gap-2 bg-yellow-300 rounded-full p-1 pr-4"
+                  >
+                    <Image
+                      src={session.user?.image as string}
+                      alt="avatar"
+                      width="36" height="36"
+                      className="rounded-full"
+                    />
+                    {lastName}
+                  </Link>
+                </div>
+                {/* <button
+                  onClick={() => signOut()}
+                  className="bg-gray-200 rounded-full px-4 py-2"
                 >
-                  <Image
-                    src={session.user?.image as string}
-                    alt="avatar"
-                    width="36" height="36"
-                    className="rounded-full"
-                  />
-                  {lastName}
-                </Link>
-              </div>
+                  Logout
+                </button> */}
+              </>
 
             )}
             {!session && (

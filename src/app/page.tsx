@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <section className="max-w-lg mx-auto text-center mt-16">
       <div className="text-gray-600">
-        <p>
+        <p className="inline-flex h-6">
           <FontAwesomeIcon icon={faStar} />
           <FontAwesomeIcon icon={faStar} />
           <FontAwesomeIcon icon={faStar} />

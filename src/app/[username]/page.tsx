@@ -1,5 +1,6 @@
 import DonationForm from "@/components/DonationForm";
 import DonationStatus from "@/components/DonationStatus";
+import { connectToDB } from "@/lib/utils";
 import { Donation, DonationModel } from "@/models/Donation";
 import { ProfileInfo, ProfileInfoModel } from "@/models/ProfileInfo";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +17,9 @@ type Props = {
 
 const SingleProfilePage = async ({params}: Props) => {
   const username = params.username;
-  await mongoose.connect(process.env.MONGODB_URI as string)
+  connectToDB()
+  // await mongoose.connect(process.env.MONGODB_URI as string)
+  // 不区分大小写的检索
   const profileInfoDoc : ProfileInfo | null = await ProfileInfoModel.findOne({username}).collation({ locale: 'en', strength: 2 })
   if (!profileInfoDoc) {
     return (
@@ -42,7 +45,7 @@ const SingleProfilePage = async ({params}: Props) => {
           <div className="mb-1">
             <h1 className="text-3xl font-semibold">{profileInfoDoc.displayName}</h1>
             <h2 className="flex gap-1 items-center">
-              <FontAwesomeIcon icon={faCoffee}/>
+              <FontAwesomeIcon icon={faCoffee} height="1rem"/>
               <span>/</span>
               <span>{profileInfoDoc.username}</span>
             </h2>
@@ -78,7 +81,7 @@ const SingleProfilePage = async ({params}: Props) => {
                       </span>
                     </h3>
                     <p className="bg-gray-100 p-2 rounded-md">
-                      {donation.message}
+                      {donation.message || 'No message left'}
                     </p>
                   </div>
                 ))}

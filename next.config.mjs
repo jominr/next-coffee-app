@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: '*.googleusercontent.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'next-coffee-app.s3.amazonaws.com',
+        port: '',
+      }
     ]
   }
 };

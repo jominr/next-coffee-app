@@ -79,7 +79,7 @@ const ProfileInfoForm = ({profileInfo} : Props) => {
 
       <div className="flex justify-between">
         <button className="bg-yellow-300 px-4 py-2 rounded-lg mt-4 flex gap-2 items-center">
-          <FontAwesomeIcon icon={faSave}/>
+          <FontAwesomeIcon icon={faSave} height="1rem"/>
           Save profile
         </button>
 

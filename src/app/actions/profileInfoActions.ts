@@ -1,10 +1,12 @@
 "use server";
 import { auth } from "@/lib/auth";
+import { connectToDB } from "@/lib/utils";
 import { ProfileInfoModel } from "@/models/ProfileInfo";
 import mongoose from "mongoose";
 
 export async function saveProfile(formData: FormData) {
-  await mongoose.connect(process.env.MONGODB_URI as string);
+  // await mongoose.connect(process.env.MONGODB_URI as string);
+  connectToDB();
   const session = await auth();
   if (!session) throw new Error("you need to be logged in");
   const email = session.user?.email;

@@ -16,7 +16,12 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'next-coffee-app.s3.amazonaws.com',
         port: '',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'next-coffee-app.s3.ap-southeast-2.amazonaws.com',
+        port: '',
+      },
     ]
   }
 };

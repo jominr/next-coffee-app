@@ -31,7 +31,7 @@ const SingleProfilePage = async ({params}: Props) => {
     <div>
       <DonationStatus />
       <div className="w-full h-48 bg-blue-400">
-        <Image className="object-cover object-center h-48" width={1024} height={1024} src={profileInfoDoc.coverUrl} alt="cover img"/>
+        <Image className="object-cover object-center h-48" width={2048} height={1024} src={profileInfoDoc.coverUrl} alt="cover img"/>
       </div>
 
       <div className="max-w-3xl px-2 mx-auto relative -mt-16">

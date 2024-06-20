@@ -55,7 +55,7 @@ const DonationForm = ({email}: {email: string}) => {
       {/* div.mt-2*/}
       {/* 比特币，以太坊，莱特币，三种加密货币 */}
       <div className="mt-2">
-        <h3 className="text-xs text-gray-500 mb-1">Pay with selected crypto or with cc</h3>
+        <h3 className="text-xs text-gray-500 mb-1">Pay with selected type</h3>
         <div className="flex gap-1">
           <button type="button" onClick={() => setCrypto('btc')} className={"crypto " + (crypto === 'btc' ? 'active' : '')}>
             <span>BTC</span>
